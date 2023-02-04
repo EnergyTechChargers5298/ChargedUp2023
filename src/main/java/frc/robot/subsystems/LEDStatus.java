@@ -17,6 +17,7 @@ public class LEDStatus extends SubsystemBase {
     private final NetworkTable FMSTable;
     private final DoubleSubscriber FMSControlData;
     private final BooleanSubscriber IsRedAlliance;
+    private static LEDStatus instance;
 
     private LEDStatus() {
         led = new Spark(Ports.BLINKIN_PORT);
@@ -26,9 +27,13 @@ public class LEDStatus extends SubsystemBase {
         IsRedAlliance = FMSTable.getBooleanTopic("IsRedAlliance").subscribe(false);
     }
 
-
-
-    
+        public static LEDStatus getInstance() {
+            if(instance == null) {
+                instance = new LEDStatus();
+            }
+            return instance;
+        }
+  
     public void setLed(Colors color) {
         led.set(color.getColor());
     }
@@ -48,5 +53,8 @@ public class LEDStatus extends SubsystemBase {
             }
         }
     }    
-
+    @Override
+    public void periodic() {
+        RobotStatus();
+    }
 }
