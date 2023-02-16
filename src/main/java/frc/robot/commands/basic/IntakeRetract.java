@@ -19,6 +19,6 @@ public class IntakeRetract extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    intake.stop();
+    intake.retract();
   }
 }
