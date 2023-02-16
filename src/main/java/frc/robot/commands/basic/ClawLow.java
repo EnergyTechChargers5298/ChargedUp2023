@@ -14,26 +14,11 @@ private Claw claw;
   public ClawLow() {
     // Use addRequirements() here to declare subsystem dependencies.
     claw = Claw.getInstance();
-    addRequirements(claw);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
-
-  // Called every time the scheduler runs while the command is scheduled.
-  @Override
-  public void execute() {
-    claw.SetLow();
-  }
-
-  // Called once the command ends or is interrupted.
-  @Override
-  public void end(boolean interrupted) {}
-
-  // Returns true when the command should end.
-  @Override
-  public boolean isFinished() {
-    return false;
+  public void initialize() {
+    claw.setlow();
   }
 }
