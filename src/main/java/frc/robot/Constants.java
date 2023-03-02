@@ -18,10 +18,10 @@ import frc.robot.utils.PIDF;
  */
 public final class Constants {
   public static class SwerveConstants {
-    public static final ModuleConfig SWERVE_FL = new ModuleConfig("FL", Ports.SWERVE_DRIVE_FL, Ports.SWERVE_TURN_FL, 4.126);
-    public static final ModuleConfig SWERVE_FR = new ModuleConfig("FR", Ports.SWERVE_DRIVE_FR, Ports.SWERVE_TURN_FR, 4.157);
-    public static final ModuleConfig SWERVE_BL = new ModuleConfig("BL", Ports.SWERVE_DRIVE_BL, Ports.SWERVE_TURN_BL, 5.305);
-    public static final ModuleConfig SWERVE_BR = new ModuleConfig("BR", Ports.SWERVE_DRIVE_BR, Ports.SWERVE_TURN_BR, 1.375);
+    public static final ModuleConfig SWERVE_FL = new ModuleConfig("FL", Ports.SWERVE_DRIVE_FL, Ports.SWERVE_TURN_FL, 1.158);
+    public static final ModuleConfig SWERVE_FR = new ModuleConfig("FR", Ports.SWERVE_DRIVE_FR, Ports.SWERVE_TURN_FR, 5.797);
+    public static final ModuleConfig SWERVE_BL = new ModuleConfig("BL", Ports.SWERVE_DRIVE_BL, Ports.SWERVE_TURN_BL, 0.567);
+    public static final ModuleConfig SWERVE_BR = new ModuleConfig("BR", Ports.SWERVE_DRIVE_BR, Ports.SWERVE_TURN_BR, 3.213);
 
     public static final PIDF TURN_PID = new PIDF(0.13, 0, 2 * Math.PI, -1, 1, false);
     public static final double ANGLE_THRESHOLD = Units.degreesToRadians(2);
@@ -35,19 +35,20 @@ public final class Constants {
     public static final double WHEEL_BASE = Units.inchesToMeters(23);
     public static final double WHEEL_DIAMETER = Units.inchesToMeters(4);
   }
+  
+  public static class InConstants {
+    public static final boolean INTAKE_INVERTED = true;
+    public static final double INTAKE_SPEED = 1.0;
 
-  public static class FrisbeeConstants {
-    public static final boolean IS_INVERTED = false;
-    public static final double DEFAULT_SPEED = 1.0;
+    public static final boolean FRISBEE_INVERTED = false;
+    public static final double FRISBEE_SPEED = 1.0;
   }
   
-  public static class IntakeConstants {
-    public static final boolean IS_INVERTED = false;
-    public static final double DEFAULT_SPEED = 1.0;
-  }
-  
-  public static class ArmConstants{
-    public static final boolean IS_INVERTED = false;
-    public static final double DEFAULT_SPEED = 1.0;
+  public static class OutConstants {
+    public static final boolean ARM_INVERTED = false;
+    public static final double ARM_SPEED = 1.0;
+
+    public static final boolean WRIST_INVERTED = false;
+    public static final double WRIST_SPEED = 0.5;
   }
 }

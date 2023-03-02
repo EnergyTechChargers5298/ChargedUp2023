@@ -53,22 +53,7 @@ public class SwerveModule {
 
         currentState = new SwerveModuleState();
 
-        //turnController = SwerveConstants.TURN_PID.getConfiguredController(turnMotor, turnEncoder);
-        turnController = turnMotor.getPIDController();
-        turnController.setFeedbackDevice(turnEncoder);
-        
-        turnController.setP(SwerveConstants.TURN_PID.kP);
-        turnController.setI(SwerveConstants.TURN_PID.kI);
-        turnController.setD(SwerveConstants.TURN_PID.kD);
-        turnController.setFF(SwerveConstants.TURN_PID.kF);
-        turnController.setOutputRange(SwerveConstants.TURN_PID.outputRange[0],
-        SwerveConstants.TURN_PID.outputRange[1]);
-        turnController.setFeedbackDevice(turnEncoder);
-
-        turnController.setPositionPIDWrappingEnabled(true);
-        turnController.setPositionPIDWrappingMinInput(SwerveConstants.TURN_PID.inputRange[0]);
-        turnController.setPositionPIDWrappingMaxInput(SwerveConstants.TURN_PID.inputRange[1]);
-
+        turnController = SwerveConstants.TURN_PID.getConfiguredController(turnMotor, turnEncoder);
         
         turnMotor.burnFlash();
 

@@ -13,15 +13,18 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.basic.ArmReach;
 import frc.robot.commands.basic.ArmRetract;
 import frc.robot.commands.basic.ClawGrab;
+import frc.robot.commands.basic.ClawHigh;
+import frc.robot.commands.basic.ClawLow;
 import frc.robot.commands.basic.ClawRelease;
 import frc.robot.commands.basic.FrisbeeClockwise;
 import frc.robot.commands.basic.FrisbeeCounterClockwise;
 import frc.robot.commands.basic.IntakeChomp;
 import frc.robot.commands.basic.IntakeEat;
-import frc.robot.commands.basic.IntakeRetract;
+import frc.robot.commands.basic.IntakeLift;
 import frc.robot.commands.basic.IntakeSpit;
 import frc.robot.commands.drive.SwerveDrive;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.utils.TriggerButton;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -60,10 +63,10 @@ import frc.robot.subsystems.Drivetrain;
       () -> driveController.getRawAxis(4)
     ));
 
-    new JoystickButton(driveController,Button.kX.value).whileTrue(new IntakeChomp());
     new JoystickButton(driveController,Button.kB.value).whileTrue(new IntakeEat());
-    new JoystickButton(driveController,Button.kY.value).whileTrue(new IntakeRetract());
     new JoystickButton(driveController,Button.kA.value).whileTrue(new IntakeSpit());
+    new JoystickButton(driveController,Button.kX.value).whileTrue(new IntakeChomp());
+    new JoystickButton(driveController,Button.kY.value).whileTrue(new IntakeLift());
     
 
     new JoystickButton(operatorController,Button.kX.value).whileTrue(new ClawGrab());
@@ -73,6 +76,9 @@ import frc.robot.subsystems.Drivetrain;
     
     new JoystickButton(operatorController,Button.kRightBumper.value).whileTrue(new FrisbeeClockwise());
     new JoystickButton(operatorController,Button.kLeftBumper.value).whileTrue(new FrisbeeCounterClockwise());
+
+    new TriggerButton(operatorController, XboxController.Axis.kLeftTrigger).whileTrue(new ClawLow());
+    new TriggerButton(operatorController, XboxController.Axis.kRightTrigger).whileTrue(new ClawHigh());
   
   }
   /**

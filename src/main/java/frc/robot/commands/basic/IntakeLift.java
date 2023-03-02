@@ -7,11 +7,11 @@ package frc.robot.commands.basic;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Intake;
 
-public class IntakeRetract extends CommandBase {
+public class IntakeLift extends CommandBase {
   private Intake intake;
 
   /** Creates a new IntakeRetract. */
-  public IntakeRetract() {
+  public IntakeLift() {
     // Use addRequirements() here to declare subsystem dependencies.
     intake = Intake.getInstance();
   }

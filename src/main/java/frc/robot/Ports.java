@@ -21,18 +21,17 @@ public final class Ports {
 
     public static final int INTAKE = 9;
     public static final int FRISBEE = 10;
-    public static final int ARM = 11;
+    public static final int ARM = 12;
+    public static final int WRIST = 11;
 
-    public static final int PNEUMATIC_MODULE = 0;
-    public static final int POWER_DISTRIBUTION = 15;
+    public static final int PNEUMATIC_MODULE = 21;
+    public static final int POWER_DISTRIBUTION = 20;
 
     // Pneumatic Module
-    public static final int INTAKE_CHOMP = 0;
-    public static final int INTAKE_RETRACT = 1;
-    public static final int CLAW_GRAB = 2;
-    public static final int CLAW_RELEASE = 3;
-    public static final int CLAW_LOW = 4;
-    public static final int CLAW_HIGH = 5;
+    public static final int INTAKE_CHOMP = 1;
+    public static final int INTAKE_RETRACT = 0;
+    public static final int CLAW_GRAB = 3;
+    public static final int CLAW_RELEASE = 2;
 
     // Dio Ports
     public static final int BLINKIN = 0;

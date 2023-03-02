@@ -4,16 +4,16 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Ports;
-import frc.robot.Constants.ArmConstants;
+import frc.robot.Constants.OutConstants;
 
 public class Arm extends SubsystemBase {
 
-  private CANSparkMax armMotor;
+  private CANSparkMax motor;
   private static Arm instance;
 
   private Arm() {
-    armMotor = new CANSparkMax(Ports.ARM, MotorType.kBrushless);
-    armMotor.setInverted(ArmConstants.IS_INVERTED);
+    motor = new CANSparkMax(Ports.ARM, MotorType.kBrushless);
+    motor.setInverted(OutConstants.ARM_INVERTED);
   }
 
   public static Arm getInstance() {
@@ -24,15 +24,15 @@ public class Arm extends SubsystemBase {
   }
 
   public void reach() {
-    armMotor.set(ArmConstants.DEFAULT_SPEED);
+    motor.set(OutConstants.ARM_SPEED);
   }
 
   public void retract() {
-    armMotor.set(-ArmConstants.DEFAULT_SPEED);
+    motor.set(-OutConstants.ARM_SPEED);
   }
 
   public void stop() {
-    armMotor.set(0);
+    motor.set(0);
   }
 
   @Override
