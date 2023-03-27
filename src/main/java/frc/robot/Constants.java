@@ -58,7 +58,7 @@ public final class Constants {
   
   public static class OutConstants {
     public static final boolean ARM_INVERTED = false;
-    public static final double ARM_SPEED = 0.6;
+    public static final double ARM_SPEED = 1.0;
     public static final double ARM_POSITION_FACTOR = 2 * Math.PI * Units.inchesToMeters(1);
     public static final int ARM_COUNTS_PER_REV = 8192;
 
@@ -73,7 +73,7 @@ public final class Constants {
     public static final double WRIST_POSITION_TOLERANCE = 0.5;
 
     public static final boolean WRIST_INVERTED = false;
-    public static final double WRIST_SPEED = 0.5;
+    public static final double WRIST_SPEED = 0.8;
   }
 
   public static final class AutoPath {

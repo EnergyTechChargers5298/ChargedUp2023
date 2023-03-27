@@ -6,11 +6,7 @@
 package frc.robot.commands.closed;
 
 import edu.wpi.first.math.controller.PIDController;
-import edu.wpi.first.math.controller.ProfiledPIDController;
-import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.wpilibj2.command.PIDCommand;
-import edu.wpi.first.wpilibj2.command.ProfiledPIDCommand;
-import frc.robot.RobotContainer;
 import frc.robot.Constants.OutConstants;
 import frc.robot.subsystems.Claw;
 
@@ -21,7 +17,6 @@ public class WristSet extends PIDCommand {
   public static Claw mClaw;
   public enum WristPosition {
     RETRACTED(0),
-    //TOP(82),
     TOP(100),
     MID(72),
     HPS(100);

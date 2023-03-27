@@ -4,26 +4,30 @@
 
 package frc.robot.commands.complex;
 
+import edu.wpi.first.wpilibj2.command.ParallelRaceGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
-import frc.robot.RobotContainer;
-import frc.robot.commands.basic.IntakeChomp;
-import frc.robot.commands.basic.IntakeEat;
+import frc.robot.commands.basic.ClawRelease;
+import frc.robot.commands.complex.Wrarm.ComboPosition;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
-public class AutoCinco extends SequentialCommandGroup {
-  /** Creates a new AutoCinco. */
-  public AutoCinco() {
-    // Add your commands in the addCommands() call, e.g.
-    // addCommands(new FooCommand(), new BarCommand());
+public class AutoScoreHigh extends SequentialCommandGroup {
+  /** Creates a new AutoUno. */
+  public AutoScoreHigh() {
     addCommands(
-      new AutoUno(),
-      new IntakeChomp(),
-      new WaitCommand(1),
-      new RobotContainer().pathUno,
-      new IntakeEat()
+      new WrarmReset(),
+      new ParallelRaceGroup(
+        new WaitCommand(1.5),
+        new Wrarm(ComboPosition.TOP)
+      ),
+      new ClawRelease(),
+      new WaitCommand(0.25),
+      new ParallelRaceGroup(
+        new WaitCommand(1.5),
+        new Wrarm(ComboPosition.RETRACTED)
+      )
     );
   }
 }

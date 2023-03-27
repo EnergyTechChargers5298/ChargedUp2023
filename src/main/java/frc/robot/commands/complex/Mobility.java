@@ -17,7 +17,7 @@ public class Mobility extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new AutoUno(),
+      new AutoScoreHigh(),
       new WaitCommand(1),
       new RobotContainer().pathUno
     );

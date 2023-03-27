@@ -5,10 +5,7 @@
 package frc.robot.commands.closed;
 
 import edu.wpi.first.math.controller.PIDController;
-import edu.wpi.first.math.controller.ProfiledPIDController;
-import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.wpilibj2.command.PIDCommand;
-import edu.wpi.first.wpilibj2.command.ProfiledPIDCommand;
 import frc.robot.Constants.OutConstants;
 import frc.robot.subsystems.Arm;
 
