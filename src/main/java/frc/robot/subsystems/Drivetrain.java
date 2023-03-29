@@ -133,6 +133,10 @@ public class Drivetrain extends SubsystemBase {
     return Rotation2d.fromDegrees(navX.getAngle());
   }
 
+  public float getPitch() {
+    return navX.getPitch();
+  }
+
   // public Rotation2d getHeading() {
   //   return Rotation2d.fromRadians(MathUtil.angleModulus(getRawHeading().getRadians()));
   // }
