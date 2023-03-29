@@ -43,6 +43,8 @@ public class Drivetrain extends SubsystemBase {
 
   private boolean fieldCentric;
 
+  private boolean tip;
+
   /** Creates a new Drivetrain. */
   private Drivetrain() {
     modules = new SwerveModule[4];
@@ -67,6 +69,8 @@ public class Drivetrain extends SubsystemBase {
       navX.reset();
 
       fieldCentric = true;
+
+      tip = false;
   }
 
   /**
@@ -181,6 +185,14 @@ public class Drivetrain extends SubsystemBase {
 
   public Field2d getField() {
     return field;
+  }
+
+  public void setTip(boolean newTip) {
+    tip = newTip;
+  }
+
+  public boolean getTip() {
+    return tip;
   }
 
   // Assuming this method is part of a drivetrain subsystem that provides the necessary methods

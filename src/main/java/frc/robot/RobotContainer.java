@@ -21,6 +21,7 @@ import frc.robot.commands.basic.IntakeChomp;
 import frc.robot.commands.basic.IntakeEat;
 import frc.robot.commands.basic.IntakeLift;
 import frc.robot.commands.basic.IntakeSpit;
+import frc.robot.commands.basic.SetTip;
 import frc.robot.commands.basic.WristReset;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import frc.robot.commands.complex.AutoScoreHigh;
@@ -73,12 +74,12 @@ import frc.robot.utils.TriggerButton;
     Drivetrain.getInstance().setDefaultCommand(new SwerveDrive(
       () -> -driveController.getRawAxis(1),
       () -> driveController.getRawAxis(0),
-      () -> driveController.getRawAxis(4)
+      () -> driveController.getRawAxis(4),
+      () -> driveController.getXButton()
     ));
 
     new JoystickButton(driveController,Button.kB.value).whileTrue(new IntakeEat());
     new JoystickButton(driveController,Button.kA.value).whileTrue(new IntakeSpit());
-    new JoystickButton(driveController,Button.kX.value).whileTrue(new IntakeChomp());
     new JoystickButton(driveController,Button.kY.value).whileTrue(new IntakeLift());
 
     //new TriggerButton(driveController, XboxController.Axis.kLeftTrigger).whileTrue(new ComplexEat());

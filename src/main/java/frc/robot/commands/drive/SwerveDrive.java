@@ -18,16 +18,18 @@ public class SwerveDrive extends CommandBase {
   private Supplier<Double> xSpeed;
   private Supplier<Double> ySpeed;
   private Supplier<Double> rotSpeed;
+  private Supplier<Boolean> noTip;
   private SlewRateLimiter filter;
   private SlewRateLimiter filter2;
 
   // private Supplier<Boolean> fieldsup;
 
   /** Creates a new SwerveDrive. */
-  public SwerveDrive(Supplier<Double> xSpeed, Supplier<Double> ySpeed, Supplier<Double> rotSpeed) {
+  public SwerveDrive(Supplier<Double> xSpeed, Supplier<Double> ySpeed, Supplier<Double> rotSpeed, Supplier<Boolean> noTip) {
     this.xSpeed = xSpeed;
     this.ySpeed = ySpeed;
     this.rotSpeed = rotSpeed;
+    this.noTip = noTip;
     drivetrain = Drivetrain.getInstance();
     filter = new SlewRateLimiter(0.85);
     filter2 = new SlewRateLimiter(0.85);
