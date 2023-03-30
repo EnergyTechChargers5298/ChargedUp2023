@@ -26,7 +26,6 @@ import frc.robot.commands.basic.WristReset;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import frc.robot.commands.complex.AutoScoreHigh;
 import frc.robot.commands.complex.Wrarm;
-import frc.robot.commands.complex.AntiTip;
 import frc.robot.commands.complex.Wrarm.ComboPosition;
 import frc.robot.commands.drive.SwerveDrive;
 import frc.robot.subsystems.Drivetrain;
