@@ -26,6 +26,7 @@ import frc.robot.commands.basic.WristReset;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import frc.robot.commands.complex.AutoScoreHigh;
 import frc.robot.commands.complex.Wrarm;
+import frc.robot.commands.complex.AntiTip;
 import frc.robot.commands.complex.Wrarm.ComboPosition;
 import frc.robot.commands.drive.SwerveDrive;
 import frc.robot.subsystems.Drivetrain;
@@ -81,6 +82,7 @@ import frc.robot.utils.TriggerButton;
     new JoystickButton(driveController,Button.kB.value).whileTrue(new IntakeEat());
     new JoystickButton(driveController,Button.kA.value).whileTrue(new IntakeSpit());
     new JoystickButton(driveController,Button.kY.value).whileTrue(new IntakeLift());
+    //new JoystickButton(driveController,Button.kX.value).whileTrue(new AntiTip());
 
     //new TriggerButton(driveController, XboxController.Axis.kLeftTrigger).whileTrue(new ComplexEat());
 

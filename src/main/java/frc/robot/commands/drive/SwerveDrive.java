@@ -10,6 +10,7 @@ import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.commands.complex.AntiTip;
 
 public class SwerveDrive extends CommandBase {
 
@@ -49,6 +50,9 @@ public class SwerveDrive extends CommandBase {
   public void execute() {
     drivetrain.drive(filter.calculate(MathUtil.applyDeadband(xSpeed.get(), 0.1)), filter2.calculate(MathUtil.applyDeadband(ySpeed.get(), 0.1)),
     MathUtil.applyDeadband(rotSpeed.get(), 0.1), drivetrain.getFieldCentric());
+    if(noTip == true) {
+      AntiTip();
+    }
     // drivetrain.drive(0, 0, 0);
   }
   // Called once the command ends or is interrupted.
