@@ -78,10 +78,10 @@ import frc.robot.utils.TriggerButton;
       () -> driveController.getXButton()
     ));
 
-    new JoystickButton(driveController,Button.kB.value).whileTrue(new IntakeEat());
-    new JoystickButton(driveController,Button.kA.value).whileTrue(new IntakeSpit());
-    new JoystickButton(driveController,Button.kY.value).whileTrue(new IntakeLift());
-    //new JoystickButton(driveController,Button.kX.value).whileTrue(new AntiTip());
+    // new JoystickButton(driveController,Button.kB.value).whileTrue(new IntakeEat());
+    // new JoystickButton(driveController,Button.kA.value).whileTrue(new IntakeSpit());
+    // new JoystickButton(driveController,Button.kY.value).whileTrue(new IntakeLift());
+    // new JoystickButton(driveController,Button.kX.value).whileTrue(new AntiTip());
 
     //new TriggerButton(driveController, XboxController.Axis.kLeftTrigger).whileTrue(new ComplexEat());
 
