@@ -17,9 +17,9 @@ public class ArmSet extends PIDCommand {
   public enum ArmPosition {
     RETRACTED(0),
     //TOP(200),
-    TOP(170),
-    MID(78),
-    HPS(0);
+    TOP(187),
+    MID(58),
+    HPS(82);
 
 
     public final double setPoint;

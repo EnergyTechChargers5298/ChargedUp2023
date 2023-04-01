@@ -24,6 +24,7 @@ import frc.robot.commands.basic.IntakeSpit;
 import frc.robot.commands.basic.SetTip;
 import frc.robot.commands.basic.WristReset;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import frc.robot.commands.complex.AutoMobilityBalance;
 import frc.robot.commands.complex.AutoScoreHigh;
 import frc.robot.commands.complex.Wrarm;
 import frc.robot.commands.complex.Wrarm.ComboPosition;
@@ -110,6 +111,6 @@ import frc.robot.utils.TriggerButton;
   public Command m_autonomousCommand() {
 
     //return Drivetrain.getInstance().followTrajectoryCommand(traj1, true);
-    return new AutoScoreHigh();
+    return new AutoMobilityBalance();
   }
 }
