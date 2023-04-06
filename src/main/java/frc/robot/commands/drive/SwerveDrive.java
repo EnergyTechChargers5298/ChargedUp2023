@@ -8,7 +8,8 @@ import java.util.function.Supplier;
 
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.filter.SlewRateLimiter;
-import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Drivetrain;
 public class SwerveDrive extends CommandBase {
@@ -18,33 +19,25 @@ public class SwerveDrive extends CommandBase {
   private Supplier<Double> xSpeed;
   private Supplier<Double> ySpeed;
   private Supplier<Double> rotSpeed;
-  private Supplier<Boolean> noTip;
+  private Supplier<Boolean> xLock;
+  private Supplier<Boolean> offLock;
   private SlewRateLimiter filter;
   private SlewRateLimiter filter2;
-  private float ySetpoint;
-  private float xSetpoint;
-  private double xRate;
-  private double yRate;
-  private XboxController driver;
-  
-
+  private boolean toggled;
 
   // private Supplier<Boolean> fieldsup;
 
   /** Creates a new SwerveDrive. */
-  public SwerveDrive(Supplier<Double> xSpeed, Supplier<Double> ySpeed, Supplier<Double> rotSpeed, Supplier<Boolean> noTip) {
+  public SwerveDrive(Supplier<Double> xSpeed, Supplier<Double> ySpeed, Supplier<Double> rotSpeed, Supplier<Boolean> xLock, Supplier<Boolean> offLock, boolean toggled) {
     this.xSpeed = xSpeed;
     this.ySpeed = ySpeed;
     this.rotSpeed = rotSpeed;
-    this.noTip = noTip;
-    ySetpoint = 0;
-    xSetpoint = 0;
-    driver = new XboxController(0);
-    xRate = driver.getLeftX();
-    yRate = driver.getLeftY();
+    this.xLock = xLock;
+    this.offLock = offLock;
+    this.toggled = toggled;
     drivetrain = Drivetrain.getInstance();
-    filter = new SlewRateLimiter(0.85);
-    filter2 = new SlewRateLimiter(0.85);
+    filter = new SlewRateLimiter(1.5);
+    filter2 = new SlewRateLimiter(1.5);
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(drivetrain);
   }
@@ -61,9 +54,22 @@ public class SwerveDrive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-  
-    if(noTip.get() == true) {
-      AntiTip();
+    if(xLock.get()) {
+      toggled = true;
+    }
+    if(offLock.get()) {
+      toggled = false;
+    }
+
+    if(toggled) {
+      SwerveModuleState[] statesLock =         {
+        new SwerveModuleState(0, Rotation2d.fromDegrees(135)),
+        new SwerveModuleState(0, Rotation2d.fromDegrees(45)),
+        new SwerveModuleState(0, Rotation2d.fromDegrees(45)),
+        new SwerveModuleState(0, Rotation2d.fromDegrees(135))
+      };
+
+      drivetrain.setModuleState(statesLock);
     } else{
       drivetrain.drive(filter.calculate(MathUtil.applyDeadband(xSpeed.get(), 0.1)), filter2.calculate(MathUtil.applyDeadband(ySpeed.get(), 0.1)),
       MathUtil.applyDeadband(rotSpeed.get(), 0.1), drivetrain.getFieldCentric());
@@ -80,17 +86,5 @@ public class SwerveDrive extends CommandBase {
   @Override
   public boolean isFinished() {
     return false;
-  }
-
-  public void AntiTip() {
-    if(drivetrain.getPitch() > ySetpoint) {
-      xRate = Math.sin(drivetrain.getPitch()) * -1;
-      drivetrain.drive(0, yRate, 0);
-    }
-
-    if(drivetrain.getRoll() > xSetpoint) {
-      yRate = Math.sin(drivetrain.getRoll()) * -1;
-      drivetrain.drive(xRate, 0, 0);
-    }
   }
 }

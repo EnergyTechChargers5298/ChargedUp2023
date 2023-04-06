@@ -17,9 +17,9 @@ public class WristSet extends PIDCommand {
   public static Claw mClaw;
   public enum WristPosition {
     RETRACTED(0),
-    TOP(71),
-    MID(71),
-    HPS(66);
+    TOP(76),
+    MID(102),
+    HPS(68);
 
     public final double value;
 

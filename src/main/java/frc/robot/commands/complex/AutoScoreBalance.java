@@ -5,6 +5,7 @@
 package frc.robot.commands.complex;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
@@ -15,7 +16,8 @@ public class AutoScoreBalance extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new AutoScoreHigh(),
+      new AutoScoreHighMustafa(),
+      new WaitCommand(0.5),
       new AutoMobilityBalance()
     );
   }

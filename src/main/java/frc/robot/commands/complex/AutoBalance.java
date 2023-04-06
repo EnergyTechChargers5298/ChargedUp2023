@@ -5,6 +5,7 @@
 package frc.robot.commands.complex;
 
 import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.PIDCommand;
 import frc.robot.subsystems.Drivetrain;
 
@@ -15,25 +16,26 @@ public class AutoBalance extends PIDCommand {
   /** Creates a new AutoBalance. */
   public AutoBalance() {
     super(
-        // The controller that the command will use
-        new PIDController(0.0113, 0, 0),
+        // The controller that the command will use old: 0.0113
+        new PIDController(0.0113, 0, 0.001),
         // This should return the measurement
-        () -> Drivetrain.getInstance().getPitch(),
+        () -> Drivetrain.getInstance().getRoll(),
         // This should return the setpoint (can also be a constant)
         () -> 0,
         // This uses the output
         output -> {
           // Use the output here
           Drivetrain.getInstance().drive(output, 0, 0);
+          SmartDashboard.putString("autoState", "autoBalance");
         });
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Drivetrain.getInstance());
     // Configure additional PID options by calling `getController` here.
-    getController().setTolerance(2);
+    getController().setTolerance(3);
   }
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return getController().atSetpoint();
   }
 }

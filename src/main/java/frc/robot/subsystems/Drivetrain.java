@@ -237,6 +237,8 @@ public class Drivetrain extends SubsystemBase {
     SmartDashboard.putNumber("xOdometry", getPose2d().getX());
     SmartDashboard.putNumber("yOdometry", getPose2d().getY());
     SmartDashboard.putNumber("rotOdometry", getPose2d().getRotation().getDegrees());
+    SmartDashboard.putNumber("pitch", getPitch());
+    SmartDashboard.putNumber("roll", getRoll());
 
     //SmartDashboard.putData("Odometry Field", field);
   }

@@ -24,8 +24,12 @@ import frc.robot.commands.basic.IntakeSpit;
 import frc.robot.commands.basic.SetTip;
 import frc.robot.commands.basic.WristReset;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.complex.AutoMobilityBalance;
+import frc.robot.commands.complex.AutoScoreBalance;
 import frc.robot.commands.complex.AutoScoreHigh;
+import frc.robot.commands.complex.AutoScoreHighMustafa;
+import frc.robot.commands.complex.AutoToChargingStation;
 import frc.robot.commands.complex.Wrarm;
 import frc.robot.commands.complex.Wrarm.ComboPosition;
 import frc.robot.commands.drive.SwerveDrive;
@@ -56,7 +60,11 @@ import frc.robot.utils.TriggerButton;
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
-      autoChooser = new SendableChooser<Command>();
+    autoChooser = new SendableChooser<Command>();
+    autoChooser.setDefaultOption("Scoring High Only", new AutoScoreHighMustafa());
+    autoChooser.addOption("Auto Balance", new AutoMobilityBalance());
+    autoChooser.addOption("Auto Score Balance", new AutoScoreBalance());
+    SmartDashboard.putData("Auto Chooser", autoChooser);
 
     configureBindings();
   }
@@ -76,7 +84,9 @@ import frc.robot.utils.TriggerButton;
       () -> -driveController.getRawAxis(1),
       () -> driveController.getRawAxis(0),
       () -> driveController.getRawAxis(4),
-      () -> driveController.getXButton()
+      () -> driveController.getXButton(),
+      () -> driveController.getYButton(),
+      true
     ));
 
     // new JoystickButton(driveController,Button.kB.value).whileTrue(new IntakeEat());
@@ -111,6 +121,6 @@ import frc.robot.utils.TriggerButton;
   public Command m_autonomousCommand() {
 
     //return Drivetrain.getInstance().followTrajectoryCommand(traj1, true);
-    return new AutoMobilityBalance();
+    return autoChooser.getSelected();
   }
 }

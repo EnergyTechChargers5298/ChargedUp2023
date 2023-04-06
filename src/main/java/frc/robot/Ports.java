@@ -28,10 +28,10 @@ public final class Ports {
     public static final int POWER_DISTRIBUTION = 20;
 
     // Pneumatic Module
-    public static final int INTAKE_CHOMP = 9;
-    public static final int INTAKE_RETRACT = 8;
-    public static final int CLAW_GRAB = 15;
-    public static final int CLAW_RELEASE = 14;
+    public static final int INTAKE_CHOMP = 0;
+    public static final int INTAKE_RETRACT = 1;
+    public static final int CLAW_GRAB = 9;
+    public static final int CLAW_RELEASE = 11;
 
     // Dio Ports
     public static final int BLINKIN = 0;

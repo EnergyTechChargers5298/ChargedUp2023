@@ -4,6 +4,7 @@
 
 package frc.robot.commands.complex;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Drivetrain;
 
@@ -27,7 +28,8 @@ public class AutoToChargingStation extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    drivetrain.drive(.5, 0, 0);
+    drivetrain.drive(.3, 0, 0);
+    SmartDashboard.putString("autoState", "autoToChargingStation");
   }
 
   // Called once the command ends or is interrupted.
@@ -39,6 +41,6 @@ public class AutoToChargingStation extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return Math.abs(drivetrain.getPitch()) >= 5;
+    return Math.abs(drivetrain.getRoll()) >= 11;
   }
 }

@@ -5,6 +5,7 @@
 package frc.robot.commands.complex;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc.robot.commands.drive.SwerveDrive;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
@@ -16,7 +17,8 @@ public class AutoMobilityBalance extends SequentialCommandGroup {
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
       new AutoToChargingStation(),
-      new AutoBalance()
+      new AutoBalance(),
+      new SwerveDrive(() -> 0.0, () ->0.0, () -> 0.0, () -> true, () -> false, true)
     );
   }
 }
