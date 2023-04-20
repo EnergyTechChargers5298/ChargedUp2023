@@ -19,7 +19,7 @@ public class WristSet extends PIDCommand {
     RETRACTED(0),
     TOP(76),
     MID(102),
-    HPS(68);
+    HPS(67);
 
     public final double value;
 

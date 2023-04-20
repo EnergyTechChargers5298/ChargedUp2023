@@ -26,9 +26,11 @@ import frc.robot.commands.basic.WristReset;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.complex.AutoMobilityBalance;
+import frc.robot.commands.complex.AutoNiko;
 import frc.robot.commands.complex.AutoScoreBalance;
 import frc.robot.commands.complex.AutoScoreHigh;
 import frc.robot.commands.complex.AutoScoreHighMustafa;
+import frc.robot.commands.complex.AutoScoreTaxi;
 import frc.robot.commands.complex.AutoToChargingStation;
 import frc.robot.commands.complex.Wrarm;
 import frc.robot.commands.complex.Wrarm.ComboPosition;
@@ -64,6 +66,7 @@ import frc.robot.utils.TriggerButton;
     autoChooser.setDefaultOption("Scoring High Only", new AutoScoreHighMustafa());
     autoChooser.addOption("Auto Balance", new AutoMobilityBalance());
     autoChooser.addOption("Auto Score Balance", new AutoScoreBalance());
+    autoChooser.addOption("Niko", new AutoScoreTaxi());
     SmartDashboard.putData("Auto Chooser", autoChooser);
 
     configureBindings();
@@ -86,6 +89,7 @@ import frc.robot.utils.TriggerButton;
       () -> driveController.getRawAxis(4),
       () -> driveController.getXButton(),
       () -> driveController.getYButton(),
+      () -> driveController.getAButton(),
       true
     ));
 

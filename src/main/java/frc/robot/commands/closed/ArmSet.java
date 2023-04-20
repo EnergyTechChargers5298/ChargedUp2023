@@ -19,7 +19,7 @@ public class ArmSet extends PIDCommand {
     //TOP(200),
     TOP(197),
     MID(99),
-    HPS(95),
+    HPS(102),
     AUTO(40);
 
 

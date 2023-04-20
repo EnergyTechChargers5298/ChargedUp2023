@@ -24,16 +24,17 @@ public class SwerveDrive extends CommandBase {
   private SlewRateLimiter filter;
   private SlewRateLimiter filter2;
   private boolean toggled;
-
+  private Supplier<Boolean> resetField;
   // private Supplier<Boolean> fieldsup;
 
   /** Creates a new SwerveDrive. */
-  public SwerveDrive(Supplier<Double> xSpeed, Supplier<Double> ySpeed, Supplier<Double> rotSpeed, Supplier<Boolean> xLock, Supplier<Boolean> offLock, boolean toggled) {
+  public SwerveDrive(Supplier<Double> xSpeed, Supplier<Double> ySpeed, Supplier<Double> rotSpeed, Supplier<Boolean> xLock, Supplier<Boolean> offLock, Supplier<Boolean> resetField, boolean toggled) {
     this.xSpeed = xSpeed;
     this.ySpeed = ySpeed;
     this.rotSpeed = rotSpeed;
     this.xLock = xLock;
     this.offLock = offLock;
+    this.resetField = resetField;
     this.toggled = toggled;
     drivetrain = Drivetrain.getInstance();
     filter = new SlewRateLimiter(1.5);
@@ -46,8 +47,6 @@ public class SwerveDrive extends CommandBase {
   @Override
   public void initialize() {
     drivetrain.drive(0, 0, 0);
-    drivetrain.getPitch();
-    drivetrain.getRoll();
     drivetrain.resetIMU();
   }
 
@@ -59,6 +58,10 @@ public class SwerveDrive extends CommandBase {
     }
     if(offLock.get()) {
       toggled = false;
+    }
+
+    if (resetField.get()) {
+      drivetrain.resetIMU();
     }
 
     if(toggled) {
